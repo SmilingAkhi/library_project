@@ -13,10 +13,39 @@
       <nav class="nav">
         <h1>BOOK LIBRARY</h1>
       </nav>
-      <main>
-        <button class="add-btn">+</button>
-        <div class="bookDisplay"></div>
-      </main>
+      <div class="main">
+        <div class="bookContainer"></div>
+        <div class=" hidden modalContainer">
+          <div class="modalForm">
+            <form action="get">
+              <input
+                type="text"
+                class="input-field title"
+                placeholder="Book Title"
+                required
+              />
+              <input
+                type="text"
+                class="input-field author"
+                placeholder="Book Author"
+                required
+              />
+              <input
+                type="number"
+                class="input-field pages"
+                placeholder="Pages"
+                required
+              />
+              <input type="text" name="readCheck"
+               class="input-field readCheck" 
+               placeholder="Have you read the book? yes/no" 
+               required>
+              <input type="submit" class="submit" />
+            </form>
+          </div>
+        </div>
+        <button class="add-btn">+</div>  
+      </div>
     </div>
   </body>
 </html>

@@ -3,6 +3,9 @@
   padding: 0;
   margin: 0;
 }
+:root {
+  --mainColor: rgb(56, 73, 53);
+}
 .container {
   font-size: 10px;
   display: grid;
@@ -24,8 +27,12 @@ h1 {
   font-family: cursive;
   font-size: 3em;
 }
-main {
+.main {
   position: relative;
+  display: grid;
+  grid-row: 2/5;
+  width: 100%;
+  height: 100vh;
 }
 .add-btn {
   position: fixed;
@@ -41,26 +48,69 @@ main {
   cursor: pointer;
   border: none;
   border-radius: 50%;
-  background-color: rgb(56, 73, 53);
+  background-color: var(--mainColor);
 }
 .add-btn:hover {
   transform: scale(1.1);
   background-color: rgb(94, 122, 89);
 }
-.bookDisplay {
+.bookContainer {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-.book-container {
-  width: 50%;
-
-  height: 200px;
+.book {
   padding: 10px;
   background-color: rgb(228, 220, 220);
   font-family: cursive;
   font-size: 20px;
+  height: 200px;
   margin: 10px;
+}
+.modalContainer {
+  visibility: none;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+}
+.hidden {
+  visibility: hidden;
+}
+.modalForm {
+  position: absolute;
+  top: 10%;
+  height: 300px;
+  width: auto;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--mainColor);
+}
+form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.input-field {
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 2px;
+  outline: none;
+  font-family: cursive;
+}
+.submit {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  color: var(--mainColor);
+  font-size: 2em;
+  font-weight: 400;
+  background-color: white;
 }

@@ -1,5 +1,5 @@
 "use script";
-const displayContainer = document.querySelector(".bookDisplay");
+const bookContainer = document.querySelector(".bookContainer");
 
 let myLibrary = [];
 console.log(myLibrary);
@@ -32,7 +32,8 @@ function loopingMyLibrary() {
     console.log(eachBook);
 
     const eachBookContainer = document.createElement("div");
-    eachBookContainer.classList.add("book-container");
+
+    eachBookContainer.classList.add("book");
     console.log(eachBookContainer);
 
     const eachBookTitle = document.createElement("p");
@@ -48,7 +49,7 @@ function loopingMyLibrary() {
     eachBookPages.textContent = `PAGES:${eachBook.pages}`;
     eachBookContainer.appendChild(eachBookPages);
 
-    displayContainer.appendChild(eachBookContainer);
+    bookContainer.appendChild(eachBookContainer);
   }
 }
 loopingMyLibrary();
