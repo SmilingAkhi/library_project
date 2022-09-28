@@ -15,40 +15,37 @@
       </nav>
       <div class="main">
         <div class="bookContainer"></div>
-        <div class="  modalContainer">
+        <div class="hidden  modalContainer">
           <div class="modalForm">
             
-            <form action="" method="get">
+            <form >
               <input
                 type="text"
                 class="input-field title"
                 placeholder="Book Title"
-                value=""
-                required
+                name="title"
               />
               <input
                 type="text"
                 class="input-field author"
                 placeholder="Book Author"
-                value=""
-                required
+                name="author"            
               />
               <input
                 type="number"
                 class="input-field pages"
                 placeholder="Pages"
-                value=""
-                required
+                name="pages"            
               />
               <input type="text" name="readCheck"
                class="input-field readCheck" 
                placeholder="Have you read the book? yes/no"
-               value="" 
-               required>
+               name="readCheck"
+               >
 
-               <input type="submit" class="submit" />
+              
             </form>
-            
+            <button class="submit">Submit</button>
           </div>  
         </div>
         <button class="add-btn">+</div>  

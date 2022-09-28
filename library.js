@@ -3,6 +3,7 @@ const bookContainer = document.querySelector(".bookContainer");
 const displayFormBtn = document.querySelector(".add-btn");
 const formModal = document.querySelector(".modalContainer");
 const submit = document.querySelector(".submit");
+const inputField = document.querySelectorAll(".input-field");
 
 //array to store the book
 let myLibrary = [];
@@ -21,42 +22,52 @@ function Book(title, author, pages, haveRead) {
 
 //using event listener to add a function to getBookInfo
 displayFormBtn.addEventListener("click", displayForm);
-
-//function to display form
 function displayForm() {
   formModal.classList.remove("hidden");
 }
 
 //using event listener to add function to submit button
 submit.addEventListener("click", getFormInfo);
-
-//function to get form info
 function getFormInfo() {
-  //fetching the form info
   const titleInputed = document.querySelector(".title").value;
   const authorInputed = document.querySelector(".author").value;
   const pagesInputed = document.querySelector(".pages").value;
   const readValueInputed = document.querySelector(".readCheck").value;
 
-  console.log(titleInputed, authorInputed, pagesInputed, readValueInputed);
+  //book instance
+  const newBook = new Book(
+    titleInputed,
+    authorInputed,
+    pagesInputed,
+    readValueInputed
+  );
+  //validate form
+  if (
+    titleInputed === "" ||
+    authorInputed === "" ||
+    pagesInputed === "" ||
+    readValueInputed === ""
+  ) {
+    for (const eachInputField of inputField) {
+      eachInputField.style.border = "1.5px solid red";
+    }
+    preventDefault();
+  } else {
+    for (const eachInputField of inputField) {
+      eachInputField.style.border = "1.5px solid Blue";
+    }
+    console.log(titleInputed, authorInputed, pagesInputed, readValueInputed);
+  }
+
+  //function to push the created books into array
+  function addBookToLibrary(book) {
+    myLibrary.push(book);
+  }
+  addBookToLibrary(newBook);
 
   //removing the form after clicking submit
-  //   formModal.classList.add("hidden");
+  formModal.classList.add("hidden");
 }
-
-const Spitter = new Book("spitter", "bhadmus", 200, "yes");
-const crammer = new Book("crammer", "kelvin", 560, "yes");
-const fisher = new Book("fisher", "smith", 88, "yes");
-
-//function to push the created books into array
-function addBookToLibrary(book) {
-  // do stuff here
-  myLibrary.push(book);
-}
-
-addBookToLibrary(Spitter);
-addBookToLibrary(crammer);
-addBookToLibrary(fisher);
 
 //function to loop through the library and display it on the screen
 function loopingMyLibrary() {
