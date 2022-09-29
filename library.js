@@ -34,13 +34,6 @@ function getFormInfo() {
   const pagesInputed = document.querySelector(".pages").value;
   const readValueInputed = document.querySelector(".readCheck").value;
 
-  //book instance
-  const newBook = new Book(
-    titleInputed,
-    authorInputed,
-    pagesInputed,
-    readValueInputed
-  );
   //validate form
   if (
     titleInputed === "" ||
@@ -50,13 +43,19 @@ function getFormInfo() {
   ) {
     for (const eachInputField of inputField) {
       eachInputField.style.border = "1.5px solid red";
+      eachInputField.value = "";
     }
-    preventDefault();
+    //disabling submit button
+    submit.disable = true;
   } else {
     for (const eachInputField of inputField) {
       eachInputField.style.border = "1.5px solid Blue";
+      eachInputField.value = "";
     }
     console.log(titleInputed, authorInputed, pagesInputed, readValueInputed);
+
+    //removing the form after clicking submit
+    formModal.classList.add("hidden");
   }
 
   //function to push the created books into array
@@ -64,9 +63,6 @@ function getFormInfo() {
     myLibrary.push(book);
   }
   addBookToLibrary(newBook);
-
-  //removing the form after clicking submit
-  formModal.classList.add("hidden");
 }
 
 //function to loop through the library and display it on the screen
