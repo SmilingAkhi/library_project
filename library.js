@@ -4,6 +4,7 @@ const displayFormBtn = document.querySelector(".add-btn");
 const formModal = document.querySelector(".modalContainer");
 const submit = document.querySelector(".submit");
 const inputField = document.querySelectorAll(".input-field");
+const closeForm = document.querySelector(".closeForm");
 
 //array to store the book
 let myLibrary = [];
@@ -20,13 +21,25 @@ function Book(title, author, pages, haveRead) {
   };
 }
 
-//using event listener to add a function to getBookInfo
-displayFormBtn.addEventListener("click", displayForm);
-function displayForm() {
-  formModal.classList.remove("hidden");
-}
+//displaying form
+displayFormBtn.addEventListener("click", () => {
+  for (const eachInputField of inputField) {
+    eachInputField.style.border = "none";
+    eachInputField.value = "";
+  }
+  formModal.style.display = "flex";
+});
 
-//using event listener to add function to submit button
+//closing the form
+closeForm.addEventListener("click", () => {
+  formModal.style.display = "none";
+  for (const eachInputField of inputField) {
+    eachInputField.style.border = "none";
+    eachInputField.value = "";
+  }
+});
+
+//getting form info
 submit.addEventListener("click", getFormInfo);
 function getFormInfo() {
   const titleInputed = document.querySelector(".title").value;
@@ -43,7 +56,7 @@ function getFormInfo() {
   ) {
     for (const eachInputField of inputField) {
       eachInputField.style.border = "1.5px solid red";
-      eachInputField.value = "";
+      // eachInputField.value = "";
     }
     //disabling submit button
     submit.disable = true;
@@ -55,7 +68,7 @@ function getFormInfo() {
     console.log(titleInputed, authorInputed, pagesInputed, readValueInputed);
 
     //removing the form after clicking submit
-    formModal.classList.add("hidden");
+    formModal.style.display = "none";
   }
 
   //function to push the created books into array
