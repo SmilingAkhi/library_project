@@ -27,7 +27,7 @@ closeForm.addEventListener("click", () => {
 
 //getting form info
 submit.addEventListener("click", getFormInfo);
-function getFormInfo() {
+function getFormInfo(e) {
   const titleInputed = document.querySelector(".title").value;
   const authorInputed = document.querySelector(".author").value;
   const pagesInputed = document.querySelector(".pages").value;
@@ -42,10 +42,10 @@ function getFormInfo() {
   ) {
     for (const eachInputField of inputField) {
       eachInputField.style.border = "1.5px solid red";
-      // eachInputField.value = "";
     }
     //disabling submit button
-    submit.disable = true;
+    e.preventDefault();
+    // submit.disable = true;
   } else {
     for (const eachInputField of inputField) {
       eachInputField.style.border = "1.5px solid Blue";
