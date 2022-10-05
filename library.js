@@ -31,15 +31,14 @@ function getFormInfo() {
   const titleInputed = document.querySelector(".title").value;
   const authorInputed = document.querySelector(".author").value;
   const pagesInputed = document.querySelector(".pages").value;
-  const readValueInputed = document.querySelector(".readCheck").value;
-  console.log(readValueInputed);
+  //   const readValueInputed = document.querySelector(".readCheck").value;
+  const yes = document.querySelector(".yesReadCheck");
+  const no = document.querySelector(".noReadCheck");
+  let read = yes.checked;
+  let notRead = no.checked;
+
   //validate form
-  if (
-    titleInputed === "" ||
-    authorInputed === "" ||
-    pagesInputed === "" ||
-    readValueInputed === ""
-  ) {
+  if (titleInputed === "" || authorInputed === "" || pagesInputed === "") {
     for (const eachInputField of inputField) {
       eachInputField.style.border = "1.5px solid red";
     }
@@ -51,7 +50,7 @@ function getFormInfo() {
       eachInputField.style.border = "1.5px solid Blue";
       eachInputField.value = "";
     }
-    console.log(titleInputed, authorInputed, pagesInputed, readValueInputed);
+    console.log(titleInputed, authorInputed, pagesInputed);
 
     //removing the form after clicking submit
     formModal.style.display = "none";
@@ -72,12 +71,7 @@ function getFormInfo() {
     };
   }
   //create abook instance
-  const newBook = new Book(
-    titleInputed,
-    authorInputed,
-    pagesInputed,
-    readValueInputed
-  );
+  const newBook = new Book(titleInputed, authorInputed, pagesInputed);
   //function to push the created books into array
   function addBookToLibrary(book) {
     myLibrary.push(book);
@@ -95,14 +89,35 @@ function getFormInfo() {
       eachBookContainer.classList.add("book");
       console.log(eachBookContainer);
 
+      //this is where checking is going to happen
+      console.log(read);
+      console.log(notRead);
+      if (read === true) {
+        const eachBookReadbtn = document.createElement("button");
+        eachBookReadbtn.classList.add("read-btn");
+        eachBookReadbtn.classList.add("read");
+        eachBookReadbtn.textContent = `READ`;
+        eachBookContainer.appendChild(eachBookReadbtn);
+      }
+      if (notRead === true) {
+        const eachBookReadbtn = document.createElement("button");
+        eachBookReadbtn.classList.add("read-btn");
+        eachBookReadbtn.classList.add("not-read");
+        eachBookReadbtn.textContent = `NOT READ`;
+        eachBookContainer.appendChild(eachBookReadbtn);
+      }
+      if (read === false && notRead === false) {
+        const eachBookReadbtn = document.createElement("button");
+        eachBookReadbtn.classList.add("read-btn");
+        // eachBookReadbtn.textContent = `NOT READ`;
+        eachBookContainer.appendChild(eachBookReadbtn);
+      }
       const eachBookTitle = document.createElement("p");
       const eachBookauthor = document.createElement("p");
       const eachBookPages = document.createElement("p");
-      const eachBookReadbtn = document.createElement("button");
 
       //adding function to readBtn
-      eachBookReadbtn.addEventListener("click", () => {});
-      eachBookReadbtn.classList.add("read-btn");
+      //   eachBookReadbtn.addEventListener("click", () => {});
 
       eachBookTitle.textContent = ` TITLE: ${eachBook.title}`;
       eachBookContainer.appendChild(eachBookTitle);
@@ -112,9 +127,6 @@ function getFormInfo() {
 
       eachBookPages.textContent = `PAGES:${eachBook.pages}`;
       eachBookContainer.appendChild(eachBookPages);
-
-      eachBookReadbtn.textContent = `READ`;
-      eachBookContainer.appendChild(eachBookReadbtn);
 
       bookContainer.appendChild(eachBookContainer);
     }

@@ -8,14 +8,12 @@
 }
 .container {
   font-size: 10px;
-
   height: 100%;
   display: grid;
-
   grid-template-rows: 60px 5fr;
 }
 .nav {
-  position: sticky;
+  /* position: sticky; */
   display: grid;
   height: 60px;
   padding: 10px;
@@ -35,7 +33,6 @@ h1 {
   display: grid;
   grid-row: 2/5;
   width: 100%;
-  height: 100vh;
 }
 .add-btn {
   position: fixed;
@@ -44,7 +41,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 60px;
+  font-size: 40px;
   color: white;
   width: 50px;
   height: 50px;
@@ -80,7 +77,6 @@ h1 {
   font-family: cursive;
   color: white;
   width: 100px;
-  background-color: rgb(66, 196, 66);
   cursor: pointer;
 }
 .not-read {
