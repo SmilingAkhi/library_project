@@ -70,6 +70,24 @@ h1 {
   font-size: 20px;
   height: 300px;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.read-btn {
+  padding: 10px;
+  border: none;
+  font-family: cursive;
+  color: white;
+  width: 100px;
+  background-color: rgb(66, 196, 66);
+  cursor: pointer;
+}
+.not-read {
+  background-color: red;
+}
+.read {
+  background-color: rgb(66, 196, 66);
 }
 .modalContainer {
   position: absolute;
@@ -103,6 +121,11 @@ form {
   border-radius: 5px;
   padding: 2px;
   outline: none;
+  font-family: cursive;
+}
+.readCheck {
+  color: white;
+  font-size: 1.5em;
   font-family: cursive;
 }
 .submit {

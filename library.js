@@ -27,12 +27,12 @@ closeForm.addEventListener("click", () => {
 
 //getting form info
 submit.addEventListener("click", getFormInfo);
-function getFormInfo(e) {
+function getFormInfo() {
   const titleInputed = document.querySelector(".title").value;
   const authorInputed = document.querySelector(".author").value;
   const pagesInputed = document.querySelector(".pages").value;
   const readValueInputed = document.querySelector(".readCheck").value;
-
+  console.log(readValueInputed);
   //validate form
   if (
     titleInputed === "" ||
@@ -44,7 +44,7 @@ function getFormInfo(e) {
       eachInputField.style.border = "1.5px solid red";
     }
     //disabling submit button
-    e.preventDefault();
+    preventDefault();
     // submit.disable = true;
   } else {
     for (const eachInputField of inputField) {
@@ -98,6 +98,11 @@ function getFormInfo(e) {
       const eachBookTitle = document.createElement("p");
       const eachBookauthor = document.createElement("p");
       const eachBookPages = document.createElement("p");
+      const eachBookReadbtn = document.createElement("button");
+
+      //adding function to readBtn
+      eachBookReadbtn.addEventListener("click", () => {});
+      eachBookReadbtn.classList.add("read-btn");
 
       eachBookTitle.textContent = ` TITLE: ${eachBook.title}`;
       eachBookContainer.appendChild(eachBookTitle);
@@ -107,6 +112,9 @@ function getFormInfo(e) {
 
       eachBookPages.textContent = `PAGES:${eachBook.pages}`;
       eachBookContainer.appendChild(eachBookPages);
+
+      eachBookReadbtn.textContent = `READ`;
+      eachBookContainer.appendChild(eachBookReadbtn);
 
       bookContainer.appendChild(eachBookContainer);
     }
