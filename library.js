@@ -89,35 +89,9 @@ function getFormInfo() {
       eachBookContainer.classList.add("book");
       console.log(eachBookContainer);
 
-      //this is where checking is going to happen
-      console.log(read);
-      console.log(notRead);
-      if (read === true) {
-        const eachBookReadbtn = document.createElement("button");
-        eachBookReadbtn.classList.add("read-btn");
-        eachBookReadbtn.classList.add("read");
-        eachBookReadbtn.textContent = `READ`;
-        eachBookContainer.appendChild(eachBookReadbtn);
-      }
-      if (notRead === true) {
-        const eachBookReadbtn = document.createElement("button");
-        eachBookReadbtn.classList.add("read-btn");
-        eachBookReadbtn.classList.add("not-read");
-        eachBookReadbtn.textContent = `NOT READ`;
-        eachBookContainer.appendChild(eachBookReadbtn);
-      }
-      if (read === false && notRead === false) {
-        const eachBookReadbtn = document.createElement("button");
-        eachBookReadbtn.classList.add("read-btn");
-        // eachBookReadbtn.textContent = `NOT READ`;
-        eachBookContainer.appendChild(eachBookReadbtn);
-      }
       const eachBookTitle = document.createElement("p");
       const eachBookauthor = document.createElement("p");
       const eachBookPages = document.createElement("p");
-
-      //adding function to readBtn
-      //   eachBookReadbtn.addEventListener("click", () => {});
 
       eachBookTitle.textContent = ` TITLE: ${eachBook.title}`;
       eachBookContainer.appendChild(eachBookTitle);
@@ -128,10 +102,67 @@ function getFormInfo() {
       eachBookPages.textContent = `PAGES:${eachBook.pages}`;
       eachBookContainer.appendChild(eachBookPages);
 
+      //this is where checking is going to happen
+      console.log(read);
+      console.log(notRead);
+      if (read === true) {
+        const eachBookReadbtn = document.createElement("button");
+        eachBookReadbtn.classList.add("read-btn");
+        eachBookReadbtn.classList.add("read");
+        eachBookReadbtn.textContent = `READ`;
+
+        // adding function to readBtn
+        eachBookReadbtn.addEventListener("click", () => {
+          if (eachBookReadbtn.textContent === "READ") {
+            eachBookReadbtn.style.backgroundColor = "red";
+            eachBookReadbtn.textContent = "NOT READ";
+          } else {
+            eachBookReadbtn.style.backgroundColor = "rgb(66, 196, 66)";
+            eachBookReadbtn.textContent = "READ";
+          }
+        });
+        eachBookContainer.appendChild(eachBookReadbtn);
+      }
+      if (notRead === true) {
+        const eachBookReadbtn = document.createElement("button");
+        eachBookReadbtn.classList.add("read-btn");
+        eachBookReadbtn.classList.add("not-read");
+        eachBookReadbtn.textContent = `NOT READ`;
+        eachBookReadbtn.addEventListener("click", () => {
+          if (eachBookReadbtn.textContent === "READ") {
+            eachBookReadbtn.style.backgroundColor = "red";
+            eachBookReadbtn.textContent = "NOT READ";
+          } else {
+            eachBookReadbtn.style.backgroundColor = "rgb(66, 196, 66)";
+            eachBookReadbtn.textContent = "READ";
+          }
+        });
+        eachBookContainer.appendChild(eachBookReadbtn);
+      }
+      if (read === false && notRead === false) {
+        const eachBookReadbtn = document.createElement("button");
+        eachBookReadbtn.classList.add("read-btn");
+        eachBookReadbtn.classList.add("not-read");
+        eachBookReadbtn.textContent = `NOT READ`;
+        eachBookReadbtn.addEventListener("click", () => {
+          if (eachBookReadbtn.textContent === "READ") {
+            eachBookReadbtn.style.backgroundColor = "red";
+            eachBookReadbtn.textContent = "NOT READ";
+          } else {
+            eachBookReadbtn.style.backgroundColor = "rgb(66, 196, 66)";
+            eachBookReadbtn.textContent = "READ";
+          }
+        });
+        eachBookContainer.appendChild(eachBookReadbtn);
+        eachBookContainer.appendChild(eachBookReadbtn);
+      }
+      if (read === true && notRead === true) {
+        alert(`you can only choose one idiot`);
+        preventDefault();
+      }
+
       bookContainer.appendChild(eachBookContainer);
     }
   }
   loopingMyLibrary();
-  ` 
-  `;
 }
